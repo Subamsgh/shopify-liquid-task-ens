@@ -1,0 +1,19 @@
+Task_3
+
+Sticky Add to cart button on product page ?
+
+Solution:
+
+	Step_1: Create A Snippet buy-button-sticky.liquid (you can use any other name)
+
+	Step_2: Snippet > Buy-buttons.liquid
+
+	Step_3: Copy The Code Of Step_2 Code in step_1 File
+
+	Step_4: Open main-product.liquid
+
+	Step_5: {% render 'buy-button-sticky'%} => use This Code At Last In main-product.liquid
+
+	strep_6:     !--{%- if show_dynamic_checkout -%}
+            		{{ form | payment_button }}
+          		{%- endif -%} -->

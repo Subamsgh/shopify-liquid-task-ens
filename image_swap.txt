@@ -1,0 +1,94 @@
+Task_5
+
+Image Swap ? 
+
+Solution:
+
+<!-- HTML start -->
+<div class="zzz" onclick="op()">
+  {% for block in section.blocks %}
+    <p class="x{% if forloop.index == 1 %} active{% endif %}">
+      {{ block.settings.text }}
+    </p>
+  {% endfor %}
+</div>
+<!-- HTML End -->
+
+<!-- javascript start -->
+<script>
+   let x = document.querySelectorAll('.x');
+   let i = 0;
+   function xyz(){
+   x[i].classList.remove('active');
+   i=(i+1)%x.length;
+   x[i].classList.add('active');
+   }
+  let p = setInterval(xyz,2000);
+  function op(){
+    clearInterval(p);
+  }
+</script>
+<!-- javascriptEnd -->
+
+<!-- Schema Start -->
+{% schema %}
+{
+  "name": "Custom Annoncement bar",
+  "tag":"section",
+  "class":"annoucement_bar",
+  "settings": [
+    {
+    "type":"html",
+    "id":"ab",
+    "label":"announcement bar"
+  }
+  ],
+  "presets":[{
+    "name":"Custom Annoucement Bar"
+  }],
+  "blocks":[{
+    "name":"text",
+    "type":"html",
+    "settings":[{
+      "type":"text",
+      "id":"text",
+      "label":"text"
+    }]
+  }]
+}
+{% endschema %}
+<!-- schema end -->
+
+<!-- CSS start -->
+<style>
+  .zzz{
+     color: red !important;
+      text-align: center;
+      background-color: yellow;
+      position: fixed;
+      height: auto;
+      width: 100%;
+      top:0;
+      z-index: 10;
+      padding:7px;
+  }
+  .x.active{
+    display:block;
+     animation-name:move;
+    animation-duration:2s;
+    animation-timing-function:linear;
+    /* animation-iteration-count:infinite; */
+  }
+  .x{
+    display:none;
+  }
+    @keyframes move{
+    0% {
+      transform: translateY(100%);
+    }
+    100% {
+      transform: translateY(-100%);
+    }
+  }
+</style>
+<!-- CSS End -->

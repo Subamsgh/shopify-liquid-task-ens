@@ -1,0 +1,21 @@
+Task : Out of Stock variant at last on product page ?
+
+Solution:
+
+Step1:Open product-variant-picker.liquid
+
+step2:In FieldSet Tag Add Style Attribute whose Property is display : flex , (on line 53 approx)
+
+step3:Open product-variant-options.liquid
+
+Step4: Add a Class in Label tag ,(on line 100 around) ,
+			
+	class="{% if product.variants[forloop.index0].inventory_quantity > 0 %}available{% endif %} {% if product.variants[forloop.index0].inventory_quantity == 0 %}unavailable{% endif %}"
+
+step5:
+	 .available{
+    		order:-1;
+  		}
+  	.unavailable{
+    		order:10;
+  		}
